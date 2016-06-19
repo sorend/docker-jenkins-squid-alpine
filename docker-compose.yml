@@ -4,6 +4,7 @@ services:
     build: .
     container_name: squid
     image: sjperkins/squid:3.5.19-r0
+    network_mode: bridge
     ports:
       - "3128:3128"
     volumes:
