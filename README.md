@@ -3,20 +3,13 @@ Squid
 
 Slim image (18MB) of Squid 3.5.4 running under Alpine Linux 3.2.
 
+The squid uses upstream proxy.bdpnet.dk:8080 and redirects http://updates.jenkins-ci.org/download/* to http://ftp-chi.osuosl.org/pub/jenkins/* to avoid ending up on mirrors which are not supported by the BD proxy.
+
 How to use
 =========
 
 ```
-docker run -p 3128:3128 chrisdaish/squid
+make build
+make run
 ```
 
-With bespoke configuration:
-
-```
-docker run  -v <configPath>/squid.conf:/etc/squid/squid.conf:ro \
-            -v <configPath/cache:/var/cache/squid:rw \
-            -v /var/log/squid:/var/log/squid:rw \
-            -v /etc/localtime:/etc/localtime:ro \
-            -p 3128:3128 \
-            chrisdaish/squid
-```
